@@ -12,8 +12,9 @@ class TodoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Todos> allTodos = [
-      Todos(todo: "Go to bed", category: Category.health),
-      Todos(todo: "Watch TV", category: Category.personal),
+      Todos(todo: "Sleep very well", category: Category.health),
+      Todos(todo: "Watch fiim small", category: Category.personal),
+      Todos(todo: "Write code small", category: Category.work),
     ];
 
     void addTodo() {
@@ -87,9 +88,9 @@ class TodoScreen extends StatelessWidget {
           const SizedBox(
             height: 40,
           ),
-          const Text(
-            "You have 10 task for today",
-            style: TextStyle(
+          Text(
+            "You have ${allTodos.length} tasks for today",
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
