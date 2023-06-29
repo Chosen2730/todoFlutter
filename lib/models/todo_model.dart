@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
+
+const uuid = Uuid();
 
 enum Category { work, personal, shopping, health }
 
 const CategoryIcons = {
-  Category.work: Icons.work,
-  Category.health: Icons.health_and_safety,
-  Category.personal: Icons.book,
-  Category.shopping: Icons.shopping_basket,
+  Category.work: Icons.work_outline_rounded,
+  Category.health: Icons.health_and_safety_rounded,
+  Category.personal: Icons.supervised_user_circle_rounded,
+  Category.shopping: Icons.shopping_basket_rounded,
 };
 
 class Todos {
-  const Todos({
+  Todos({
     required this.todo,
-    // required this.dueDate,
-  });
+    required this.category,
+  }) : id = uuid.v4();
 
   final String todo;
-  // final DateTime dueDate;
+  final String id;
+  final Category category;
 }

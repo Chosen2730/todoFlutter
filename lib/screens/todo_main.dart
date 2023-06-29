@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:todo/models/todo_model.dart';
 import 'package:todo/widgets/categories.dart';
+import 'package:todo/widgets/new_todo.dart';
+import 'package:todo/widgets/todo_list.dart';
 
 class TodoScreen extends StatelessWidget {
   const TodoScreen({required this.onChangeScreen, super.key});
@@ -8,6 +11,15 @@ class TodoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Todos> allTodos = [
+      Todos(todo: "Go to bed", category: Category.health),
+      Todos(todo: "Watch TV", category: Category.personal),
+    ];
+
+    void addTodo() {
+      showModalBottomSheet(context: context, builder: (ctx) => const NewTodo());
+    }
+
     return Container(
       margin: const EdgeInsets.all(20),
       child: Column(
@@ -73,7 +85,7 @@ class TodoScreen extends StatelessWidget {
           ),
           const CategoryWidget(),
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           const Text(
             "You have 10 task for today",
@@ -82,6 +94,18 @@ class TodoScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
+          TodoList(allTodos: allTodos),
+          CircleAvatar(
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            child: IconButton(
+              onPressed: addTodo,
+              icon: const Icon(Icons.add),
+              color: Colors.white,
+            ),
+          )
         ],
       ),
     );
