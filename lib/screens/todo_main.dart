@@ -11,16 +11,6 @@ class TodoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Todos> allTodos = [
-      Todos(todo: "Sleep very well", category: Category.health),
-      Todos(todo: "Watch fiim small", category: Category.personal),
-      Todos(todo: "Write code small", category: Category.work),
-    ];
-
-    void addTodo() {
-      showModalBottomSheet(context: context, builder: (ctx) => const NewTodo());
-    }
-
     return Container(
       margin: const EdgeInsets.all(20),
       child: Column(
@@ -88,25 +78,7 @@ class TodoScreen extends StatelessWidget {
           const SizedBox(
             height: 40,
           ),
-          Text(
-            "You have ${allTodos.length} tasks for today",
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TodoList(allTodos: allTodos),
-          CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            child: IconButton(
-              onPressed: addTodo,
-              icon: const Icon(Icons.add),
-              color: Colors.white,
-            ),
-          )
+          const TodoList(),
         ],
       ),
     );

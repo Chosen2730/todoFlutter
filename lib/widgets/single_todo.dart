@@ -14,7 +14,7 @@ class SingleTodo extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
             Icon(
-              CategoryIcons[todo.category],
+              categoryIcons[todo.category],
               color: const Color.fromARGB(95, 1, 68, 131),
             ),
             const SizedBox(
